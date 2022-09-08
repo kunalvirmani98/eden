@@ -1,0 +1,21 @@
+.timeline {
+	background : $eden-secondary;
+	height : 10px;
+}
+
+.stage {
+	border : 1px solid $eden-secondary;
+	border-radius : 50%;
+	width : 30px;
+	height : 30px;
+	font-size : 12px;
+	background: white;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+
+	&-highlight {
+		background : $eden-primary;
+		color : white;
+	}
+}

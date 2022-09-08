@@ -1,0 +1,10 @@
+@import 'variables.scss';
+@import 'colors.scss';
+@import 'font.scss';
+@import 'timeline.scss';
+@import 'layout.scss';
+
+$primary : $eden-primary;
+$secondary : $eden-secondary;
+
+@import '~bootstrap/scss/bootstrap.scss';
