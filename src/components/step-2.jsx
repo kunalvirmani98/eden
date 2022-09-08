@@ -35,7 +35,7 @@ function Step2 (props) {
 								<input type="text" className="form-control" id="workspaceurl" placeholder="Example"/>
 							</div>
 						</div>
-						<button type="submit" className="btn btn-primary btn-lg w-100" onSubmit={handleSubmit}>Create Workspace</button>
+						<button type="submit" className="btn btn-primary btn-lg w-100" onClick={handleSubmit}>Create Workspace</button>
 					</form>
 				</div>
 			</div>

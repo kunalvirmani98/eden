@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../common/header.jsx';
+import Card from '../common/card.jsx';
 
 function Step3 (props) {
+	const [ selection, setSelection ] = useState ('for-self');
 
 	function handleSubmit (e) {
 		e.preventDefault ();
@@ -10,7 +12,11 @@ function Step3 (props) {
 
 		if (!currentStage) return
 
-		props.goToStage (currenStage+1);
+		props.goToStage (currentStage+1);
+	}
+
+	function handleCardSelection (e, selectedItem) {
+		setSelection (selectedItem);
 	}
 
 	return (
@@ -20,27 +26,29 @@ function Step3 (props) {
 				subheader="We'll streamline your setup experience accordingly." />
 			<div className="d-flex justify-content-center align-items-center">
 				<div className="w-50">
-					<div className="row">
-						<div class="card col" >
-							<img src="..." class="card-img-top" alt="..." />
-							<div class="card-body">
-								<h5 class="card-title">Card title</h5>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							</div>
+					<div className="row gx-5 mb-4">
+						<div className="col">
+							<Card 
+							uid="for-self"
+							title = "For myself"
+							selection = {selection}
+							onClick = {handleCardSelection}
+							description = "Write better. Think more clearly. Stay organized." />
 						</div>
-						<div class="card col" >
-							<img src="..." class="card-img-top" alt="..." />
-							<div class="card-body">
-								<h5 class="card-title">Card title</h5>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							</div>
+						<div className="col" >
+							<Card 
+							uid="with-team"
+							title = "With my team"
+							selection = {selection}
+							onClick = {handleCardSelection}
+							description = "Wikis, docs, tasks & projects, all in one place." />
 						</div>
-						<button className="btn btn-primary btn-lg w-100" onClick={handleSubmit}>Create Workspace</button>
+					</div>
+					<button className="btn btn-primary btn-lg w-100" onClick={handleSubmit}>Create Workspace</button>
 				</div>
 			</div>
 		</div>
-	</div>
-	)
+		)
 }
 
 export default Step3;

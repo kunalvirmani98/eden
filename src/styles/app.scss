@@ -3,8 +3,13 @@
 @import 'font.scss';
 @import 'timeline.scss';
 @import 'layout.scss';
+@import 'card.scss';
 
 $primary : $eden-primary;
 $secondary : $eden-secondary;
+
+body {
+	font-family: 'Nunito', sans-serif !important;
+}
 
 @import '~bootstrap/scss/bootstrap.scss';
