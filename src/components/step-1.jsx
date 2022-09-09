@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Header from '../common/header.jsx';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../slices/workspace-slice';
 
 function Step1 (props) {
 
 	const [ fullName, setFullName ]             = useState ('');
-	const [ errFullName, setErrFullName ]       = useState ('');
 	const [ displayName, setDisplayName ]       = useState ('');
-	const [ errDisplayName, setErrDisplayName ] = useState ('');
-	const [ isValidated, setIsValidated ]       = useState (false);
+	const dispatch                               = useDispatch ();
 
 	function handleSubmit (e) {
 		e.preventDefault ();
@@ -15,6 +15,8 @@ function Step1 (props) {
 		const { currentStage } = props;
 
 		if (!currentStage) return
+		
+		dispatch (setUserData ({ fullName, displayName }));
 
 		props.goToStage (currentStage + 1);
 	}
@@ -28,20 +30,6 @@ function Step1 (props) {
 
 		if (type === 'displayName') {
 			setDisplayName (e.target.value);
-		}
-
-		checkValidation ()
-	}
-
-	function checkValidation () {
-		if (!fullName) {
-			setErrFullName ('Fullname cannot be empty');
-			setIsValidated (false)
-		}
-
-		if (!displayName) {
-			setErrDisplayName ('Display name cannot be empty');
-			setIsValidated (false)
 		}
 	}
 
@@ -61,7 +49,7 @@ function Step1 (props) {
 							<label for="displayname" className="form-label text-start">Display Name</label>
 							<input className="form-control form-control-lg" id="displayname" type="text" placeholder="Steve" onChange={(e) => onChangeHandler (e, 'displayname')}/>
 						</div>
-						<button type="submit" className={`btn btn-primary btn-lg w-100 ${isValidated ? "" : "disabled" }`} onClick={(e) => handleSubmit (e) }>Create Workspace</button>
+						<button type="submit" className="btn btn-primary btn-lg w-100" onClick={(e) => handleSubmit (e) }>Create Workspace</button>
 					</form>
 				</div>
 			</div>

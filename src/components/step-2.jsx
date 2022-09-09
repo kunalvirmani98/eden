@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../common/header.jsx';
+import { useDispatch } from 'react-redux';
+import { setWorkspaceData } from '../slices/workspace-slice';
 
 function Step2 (props) {
+	const [ workspaceName, setWorkspaceName ] = useState ('');
+	const [ workspaceUrl, setWorkspaceUrl ]   = useState ('');
+	const dispatch                            = useDispatch ();
 
 	function handleSubmit (e) {
 		e.preventDefault ();
@@ -10,7 +15,21 @@ function Step2 (props) {
 
 		if (!currentStage) return
 
+		dispatch (setWorkspaceData ({ workspaceName, workspaceUrl }));
+
 		props.goToStage (currentStage + 1);
+	}
+
+	function onChangeHandler (e, type) {
+		if (!type) return;
+
+		if (type === 'workspaceName') {
+			setWorkspaceName (e.target.value);
+		}
+
+		if (type === 'displayName') {
+			setWorkspaceUrl (e.target.value);
+		}
 	}
 
 	return (
@@ -23,7 +42,7 @@ function Step2 (props) {
 					<form>
 						<div className="mb-3">
 							<label for="workspacename" className="form-label text-start">Workspace Name</label>
-							<input className="form-control form-control-lg" id="workspacename" type="text" placeholder="Eden" />
+							<input className="form-control form-control-lg" id="workspacename" type="text" placeholder="Eden" onChange={(e) => onChangeHandler (e, 'workspaceName')}/>
 						</div>
 						<div className="mb-3">
 							<label for="workspaceurl" className="form-label text-start">
