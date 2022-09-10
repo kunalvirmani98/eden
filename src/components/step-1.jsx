@@ -7,7 +7,7 @@ function Step1 (props) {
 
 	const [ fullName, setFullName ]             = useState ('');
 	const [ displayName, setDisplayName ]       = useState ('');
-	const dispatch                               = useDispatch ();
+	const dispatch                              = useDispatch ();
 
 	function handleSubmit (e) {
 		e.preventDefault ();
@@ -25,6 +25,7 @@ function Step1 (props) {
 		if (!type) return;
 
 		if (type === 'fullName') {
+			console.log (e.target.value);
 			setFullName (e.target.value);
 		}
 
@@ -43,11 +44,11 @@ function Step1 (props) {
 					<form>
 						<div className="mb-3">
 							<label for="fullname" className="form-label text-start">Full Name</label>
-							<input className="form-control form-control-lg" id="fullname" type="text" placeholder="Steve Jobs" onChange={(e) => onChangeHandler (e, 'fullname')}/>
+							<input className="form-control form-control-lg" id="fullname" type="text" placeholder="Steve Jobs" onChange={(e) => onChangeHandler (e, 'fullName')}/>
 						</div>
 						<div className="mb-3">
 							<label for="displayname" className="form-label text-start">Display Name</label>
-							<input className="form-control form-control-lg" id="displayname" type="text" placeholder="Steve" onChange={(e) => onChangeHandler (e, 'displayname')}/>
+							<input className="form-control form-control-lg" id="displayname" type="text" placeholder="Steve" onChange={(e) => onChangeHandler (e, 'displayName')}/>
 						</div>
 						<button type="submit" className="btn btn-primary btn-lg w-100" onClick={(e) => handleSubmit (e) }>Create Workspace</button>
 					</form>

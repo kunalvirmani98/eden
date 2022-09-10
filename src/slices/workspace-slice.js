@@ -9,13 +9,19 @@ export const workspaceSlice = createSlice({
 	},
 	reducers: {
 		setWorkspaceData : (state, action) => {
-			state.data = { ...state.data, ...action.payload }
+			console.log ('Action :', action);
+			state.workspaceData = { ...state.workspaceData, ...action.payload }
+			console.log ('State :', state.workspaceData)
 		},
 		setUserData : (state, action) => {
-			state.data = { ...state.userData, ...action.payload }
+			console.log ('Action :', action);
+			state.userData = { ...state.userData, ...action.payload }
+			console.log ('State :', state.userData)
 		},
 		setUsageData : (state, action) => {
-			state.data = { ...state.usageData, ...action.payload }
+			console.log ('Action :', action);
+			state.usageData = { ...state.usageData, ...action.payload }
+			console.log ('State :', state.usageData)
 		},
 	},
 })

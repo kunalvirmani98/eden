@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../common/header.jsx';
 import Card from '../common/card.jsx';
+import { useDispatch } from 'react-redux';
+import { setUsageData } from '../slices/workspace-slice';
 
 function Step3 (props) {
 	const [ selection, setSelection ] = useState ('for-self');
+	const dispatch                    = useDispatch ();
 
 	function handleSubmit (e) {
 		e.preventDefault ();
@@ -11,6 +14,8 @@ function Step3 (props) {
 		const { currentStage } = props;
 
 		if (!currentStage) return
+
+		dispatch (setUsageData ({ purpose : selection }));
 
 		props.goToStage (currentStage+1);
 	}

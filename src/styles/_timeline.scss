@@ -1,10 +1,9 @@
 .timeline {
-	background : $eden-secondary;
-	height : 3px;
+	height : 2px !important;
 }
 
 .stage {
-	border : 1px solid $eden-secondary;
+	border : 1px solid #ececec;
 	border-radius : 50%;
 	width : 40px;
 	height : 40px;
@@ -13,8 +12,10 @@
 	display : flex;
 	justify-content : center;
 	align-items : center;
+	margin-top : -22px;
 
 	&-highlight {
+		border : none;
 		background : $eden-primary;
 		color : white;
 	}

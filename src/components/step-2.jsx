@@ -27,7 +27,7 @@ function Step2 (props) {
 			setWorkspaceName (e.target.value);
 		}
 
-		if (type === 'displayName') {
+		if (type === 'workspaceUrl') {
 			setWorkspaceUrl (e.target.value);
 		}
 	}
@@ -49,9 +49,9 @@ function Step2 (props) {
 								Workspace URL 
 								<span className="text-secondary">(optional)</span>
 							</label>
-							<div className="input-group mb-3">
+							<div className="input-group input-group-lg mb-3">
 								<span className="input-group-text" id="workspaceurl">www.eden.com/</span>
-								<input type="text" className="form-control" id="workspaceurl" placeholder="Example"/>
+								<input type="text" className="form-control" id="workspaceurl" placeholder="Example" onChange={(e) => onChangeHandler (e, 'workspaceUrl')}/>
 							</div>
 						</div>
 						<button type="submit" className="btn btn-primary btn-lg w-100" onClick={handleSubmit}>Create Workspace</button>
